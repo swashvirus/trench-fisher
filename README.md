@@ -1,4 +1,6 @@
 # Trench Fisher
+![](assets/big_screenshot-1.png)
+![](assets/big_screenshot.png)
 ## Prologue
 
 In the 13th century, within the rugged lands of Livingstone, there lived a curious caveman named Jim. He defied fate's unkind hand, driven by an insatiable urge to explore. Lake Kariba, an enigmatic expanse, lay before him, separated by the Eight Gorges, challenging all who dared.
