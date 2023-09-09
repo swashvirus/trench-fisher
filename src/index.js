@@ -273,11 +273,11 @@ class Title extends Slide {
     constructor() {
         super();
         this.text = 'Trench fisher';
-        this.destinations = ['start', 'help', 'about', 'version']
-            .map(function (destination, index) {
+        this.dests = ['start', 'help', 'about', 'version']
+            .map(function (dest, index) {
                 const x = width / 3,
                     y = (height / 3) + index * fontSize * lineHeight;
-                return new TextButton(` ${destination}`, x, y);
+                return new TextButton(` ${dest}`, x, y);
             });
         this.timer = new Timer(3000);
         const transition = () => {
@@ -298,7 +298,7 @@ class Title extends Slide {
             const next = presentation.append(new WorldMap());
             presentation.head = next;
         };
-        const [startButton, helpButton, aboutButton, versionButton] = this.destinations;
+        const [startButton, helpButton, aboutButton, versionButton] = this.dests;
         if (startButton.pressed) {
             HandleStart();
         } else if (helpButton.pressed) {
@@ -331,7 +331,7 @@ class Title extends Slide {
         context.lineWidth = 2;
         context.stroke();
         context.restore();
-        this.destinations.forEach(destination => destination.render())
+        this.dests.forEach(dest => dest.render())
     }
 }
 
@@ -429,7 +429,7 @@ class Hud {
         context.font = font;
         context.fillStyle = light;
         context.textBaseline = 'top'
-        const text = Array.from(this.state.entries()).map(entry => entry.join(': ')).join('  ');
+        const text = Array.from(this.state.entries()).map(entry => entry.join(': ')).join(' ');
         context.fillText(text, margin, margin);
     }
 }
@@ -504,8 +504,6 @@ class MapLocation extends LocationHeaderSlide {
 class GamePadButton extends ButtonClass {
     constructor(text, x, y) {
         super({ x, y, anchor: { x: 0.5, y: 0.5 }, text: { text, color: light, anchor: { x: 0.5, y: 0.5 }, font: largeFont } });
-        this.originX = x;
-        this.originY = y;
     }
     render() {
         context.beginPath();
