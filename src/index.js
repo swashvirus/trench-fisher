@@ -108,7 +108,7 @@ class HeaderSlide extends Slide {
     render() {
         context.fillStyle = overlay;
         context.fillRect(x, y, width, height / 5);
-    };
+    }
 }
 
 class TextButton extends ButtonClass {
@@ -122,7 +122,8 @@ class TextButton extends ButtonClass {
         } else {
             this.textNode.color = light;
         }
-        if (this.disabled) this.textNode.color = dark;
+        if (this.disabled)
+            this.textNode.color = dark;
         super.render();
     }
 }
@@ -252,7 +253,7 @@ class LoadingScreen extends LoadingWindow {
     }
     update() {
         super.update();
-        if (this.timer.phita === 1 || this.xBtn.pressed || keyPressed('x')) {
+        if (this.timer.phita == 1 || this.xBtn.pressed || keyPressed('x')) {
             const next = presentation.append(this.nextSlide());
             presentation.head = next;
         }
@@ -304,7 +305,7 @@ class Title extends Slide {
         } else if (helpButton.pressed) {
             handleTextDialog(`controls:\n  ArrowLeft: Left dir key\n  ArrowRight: Right dir key`);
         } else if (aboutButton.pressed) {
-            handleTextDialog(`author: john swana`)
+            handleTextDialog(`author: john swana`);
         } else if (versionButton.pressed) {
             handleTextDialog(`version: 1.0`);
         }
@@ -331,7 +332,7 @@ class Title extends Slide {
         context.lineWidth = 2;
         context.stroke();
         context.restore();
-        this.dests.forEach(dest => dest.render())
+        this.dests.forEach(dest => dest.render());
     }
 }
 
@@ -346,7 +347,7 @@ class WorldMapHeaderSlide extends HeaderSlide {
         this.xBtn.render();
         context.font = font;
         context.fillStyle = light;
-        context.textBaseline = 'top'
+        context.textBaseline = 'top';
         context.fillText(this.text, margin, margin);
     }
 }
@@ -366,7 +367,7 @@ const locations = [
         location.data.state = new Map([
             ['score', 0]
         ]);
-        return location
+        return location;
     });
 
 class MapLabel extends TextButton {
@@ -393,12 +394,7 @@ class WorldMap extends WorldMapHeaderSlide {
             if (locations[index - 1] != null && locations[index - 1].data.state.get('score') < 10)
                 label.disabled = true;
             return label;
-        })
-
-    }
-    destroy() {
-        super.destroy();
-        this.labels.forEach(label => label.destroy());
+        });
     }
     update() {
         super.update();
@@ -413,7 +409,7 @@ class WorldMap extends WorldMapHeaderSlide {
         tileEngine.renderLayer('layer-2');
         this.labels.forEach(label => {
             context.save();
-            context.translate(x, Math.random() - .5);
+            context.translate(x, Math.random() - 0.5);
             label.render();
             context.restore();
         });
@@ -428,7 +424,7 @@ class Hud {
     render() {
         context.font = font;
         context.fillStyle = light;
-        context.textBaseline = 'top'
+        context.textBaseline = 'top';
         const text = Array.from(this.state.entries()).map(entry => entry.join(': ')).join(' ');
         context.fillText(text, margin, margin);
     }
@@ -524,7 +520,7 @@ class LevelLoadingScreen extends WindowHeaderSlide {
     update() {
         super.update();
         this.timer.update();
-        if (this.timer.phita === 1 || this.xBtn.pressed || keyPressed('x')) {
+        if (this.timer.phita == 1 || this.xBtn.pressed || keyPressed('x')) {
             ;
             const next = presentation.append(this.nextSlide());
             presentation.head = next;
@@ -548,9 +544,10 @@ class World {
                 body.pos = this.width;
                 body.vel = 0;
             }
-        })
+        });
     }
 }
+
 class Level extends LocationHeaderSlide {
     constructor(text, data) {
         super(text);
@@ -620,14 +617,13 @@ class Fish extends Body {
 }
 
 const fishTypes = [
-        { name: "Tigerfish", accel: 32 },
-        { name: "Vundu", accel: 24 },
-        { name: "bream", accel: 12 },
-        { name: "Tilapia", accel: 22 },
-        { name: "pike", accel: 24 },
-        { name: "catfish", accel: 40 },
-    ]
-    .map((fish, index) => { fish.id = index; return fish });
+    { name: "Tigerfish", accel: 32 },
+    { name: "Vundu", accel: 24 },
+    { name: "bream", accel: 12 },
+    { name: "Tilapia", accel: 22 },
+    { name: "pike", accel: 24 },
+    { name: "catfish", accel: 40 },
+];
 
 class FirstLevel extends Level {
     constructor(text, data, rodX) {
@@ -652,22 +648,19 @@ class FirstLevel extends Level {
     update(elapsed, delta) {
         const disp = 100;
         let dir = 0;
-
         if (this.yBtn.pressed || keyPressed('arrowleft'))
             dir -= 1;
-
         if (this.nBtn.pressed || keyPressed('arrowright'))
             dir += 1;
-
         this.hook.accel = disp;
         this.hook.dir = dir;
         this.world.update(elapsed, delta);
-
         if (Math.abs(this.hook.pos - (this.target.pos)) < this.barW / 8) {
             this.hook.hooked = true;
             this.progress += delta / 15;
-        } else { this.hook.hooked = false; }
-
+        } else {
+            this.hook.hooked = false;
+        }
         if (this.progress >= 1) {
             this.nextLevel();
             return;
@@ -694,13 +687,12 @@ class FirstLevel extends Level {
         context.restore();
         context.translate(this.target.pos, height / 1.25);
         context.moveTo(x, y);
-        context.scale((this.target.dir / -2), 1)
+        context.scale((this.target.dir / -2), 1);
         context.drawImage(tileset, 4 * 16, 0 * 16, 16, 16, x, y, 16, 16);
         context.closePath();
         context.strokeStyle = red;
         context.stroke();
         context.restore();
-
     }
 }
 
@@ -720,13 +712,14 @@ const animation = () => {
     canvas.style.cursor = 'initial';
     presentation.head.update(elapsed, delta);
     presentation.head.render(elapsed, delta);
-}
+};
+
 window.addEventListener('DOMContentLoaded', function () {
     const viewport = init();
     canvas = viewport.canvas;
     context = viewport.context;
     width = canvas.width = 300,
-    height = canvas.height = 150;
+        height = canvas.height = 150;
 
     initInput();
     initKeys();
@@ -738,10 +731,12 @@ window.addEventListener('DOMContentLoaded', function () {
                 "image": tileset
             }]
         }));
+
         const start = () => {
             const next = presentation.append(new LoadingScreen('Loading', () => new Title()));
             presentation.head = next;
-        }
+        };
+
         presentation.head = presentation.prepend(new ConfirmWindow('Do you want sound?', () => {
             isSound = true;
             const node = zzfxP(...buffer);
@@ -750,7 +745,8 @@ window.addEventListener('DOMContentLoaded', function () {
         }, start));
 
         animation();
-    }
+    };
     tileset.src = tileset_packed;
+
     const buffer = zzfxM(...sound_track);
 });
