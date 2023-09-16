@@ -1,4 +1,5 @@
 # Trench Fisher
+![](assets/big_screenshot-2.png)
 ![](assets/big_screenshot-1.png)
 ![](assets/big_screenshot.png)
 ## Prologue
