@@ -1,5 +1,9 @@
 # Trench Fisher Write-Up
 
+![Trench fisher screenshot](./assets/big_screenshot-2.png)
+
+## [Play game](./)
+
 ## Introduction
 My entry for js13kgames 2023 is "Trench Fisher." But why the title, and what really inspired this entry? Well, when I first heard about the js13k games 2023 theme, "13th century," the first idea that popped into my mind was how my hometown, "Livingstone - Area 213," might have looked in the middle ages. That idea gave rise to Trench Fisher, a game inspired by the actual geographic landmarks of my hometown[^1].
 
