@@ -1,7 +1,5 @@
 # Trench Fisher Write-Up
 
-![Trench fisher screenshot](./assets/big_screenshot-2.png)
-
 ## [Play game](./)
 
 ## Introduction
@@ -28,6 +26,8 @@ The title screen was designed to resemble the classic J2ME games, such as Gamelo
 The world map was an idea I had from the beginning. It may be classic, but I love it that way. It simply shows locations joined by routes.
 
 ## Gameplay and Mechanics
+
+![Trench fisher screenshot](./assets/big_screenshot-2.png)
 
 The gameplay for the role-playing game Trench Fisher revolves around the idea of the player fishing in one of the eight levels, each representing a trench at Lake Kariba[^1]. It was honestly inspired by Electronic Arts' The Sims 3 franchise (2008).
 
